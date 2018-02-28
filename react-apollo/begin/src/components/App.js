@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-import MovieSearch from './MovieSearch';
-import MovieList from './MovieList';
-
+import Movies from './Movies';
+import MovieDetailWithData from './MovieDetail';
+import CustomRoute from './CustomRoute'
+import { Route } from 'react-router-dom';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       title: 'River Runs Through It'
-    }
+    };
   }
 
-  setSearchTerm = (title) => {
-    this.setState({title});
-    console.log("setSearchTerm called");
+  setSearchTerm = title => {
+    this.setState({ title });
+    console.log('setSearchTerm called');
   };
 
   render() {
-    const {title} = this.state;
+    const { title } = this.state;
     return (
       <div>
-        <MovieSearch setSearchTerm={this.setSearchTerm} title={title} />
-        <MovieList title={title} />
+        <div>
+          <CustomRoute path="/" exact component={Movies} title={title} setSearchTerm={this.setSearchTerm}/>
+        </div>
+        <div>
+          <Route path="/detail/:movieId" component={MovieDetailWithData}  />
+        </div>
       </div>
     );
   }

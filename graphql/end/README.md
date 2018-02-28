@@ -8,9 +8,11 @@ You can see the original pad at [https://launchpad.graphql.com/3x984k8mv](https:
 
 ```bash
 npm install
-export NEO4J_URI=bolt://<your value here>:7687/
-export NEO4J_USER=<your value here>
-export NEO4J_PASSWORD=<your value here>
+export NEO4J_URI=bolt://52.3.254.195:32843
+export NEO4J_PASSWORD=looks-operabilities-props
+export NEO4J_URI=bolt://localhost:7687
+export NEO4J_USER=neo4j
+export NEO4J_PASSWORD=1234
 npm start
 ```
 

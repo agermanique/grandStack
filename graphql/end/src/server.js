@@ -1,12 +1,13 @@
 import express from 'express';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import bodyParser from 'body-parser';
+var cors = require('cors')
 
 import { schema, rootValue, context } from './schema';
 
-const PORT = 3000;
+const PORT = 3001;
 const server = express();
-
+console.log(process.env.NEO4J_URI)
 if (typeof process.env.NEO4J_URI === 'undefined') {
   console.warn('WARNING: process.env.NEO4J_URI is not defined. Check README.md for more information');
 }
@@ -17,7 +18,7 @@ if (typeof process.env.NEO4J_PASSWORD === 'undefined') {
   console.warn('WARNING: process.env.NEO4J_PASSWORD is not defined. Check README.md for more information');
 }
 
-server.use('/graphql', bodyParser.json(), graphqlExpress(request => ({
+server.use('/graphql', cors(),bodyParser.json(), graphqlExpress(request => ({
   schema,
   rootValue,
   context: context(request.headers, process.env),

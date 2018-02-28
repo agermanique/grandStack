@@ -1,8 +1,7 @@
 {
-  presets: ['latest'],
-  plugins: [
-    'transform-runtime',
-    'transform-async-generator-functions',
-    'transform-object-rest-spread',
+  "presets": [
+    "es2015"
   ],
+  "sourceMaps": true,
+  "retainLines": true
 }
